@@ -1,6 +1,4 @@
 import javafx.application.*;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.layout.*;
@@ -31,11 +29,22 @@ public class MergePDFGUI extends Application {
             label.setText(file.toString());
             System.out.println(file.toString());
         });
+        VBox layout = new VBox(20);
 
-        Label labelt = new Label("Choose one file at first");
+        Button extendButton = new Button("extend");
+        extendButton.setOnAction(e -> {
+            Button openButton2 = new Button("Open a link");
+            Label label1 = new Label();
+            openButton2.setOnAction(f -> {
+                File file = firstFile.showOpenDialog(primaryStage);
+                label1.setText(file.toString());
+            });
+            layout.getChildren().addAll(label1, openButton2);
+        });
 
-        VBox layout = new VBox(10);
-        layout.getChildren().addAll(labelt, label, openButton);
+        Label label3 = new Label("Choose one file at first");
+
+        layout.getChildren().addAll(label3, label, openButton, extendButton);
 
         Scene scene = new Scene(layout);
         window.setScene(scene);
