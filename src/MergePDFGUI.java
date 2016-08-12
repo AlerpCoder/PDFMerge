@@ -50,14 +50,13 @@ public class MergePDFGUI extends Application {
         make.setOnAction(e -> {
             //hier kommt die Methode zum mergen hin
 
-            String savedFile = null;
             try {
-                savedFile = MergePDF.merge();
-                System.out.println(savedFile);
+                MergePDF.merge();
+
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-            label2.setText(savedFile);
+            label2.setText("C:\\Users\\FrankenMEXX-Karaoke2\\Desktop\\java\\blubb.pdf");
         });
         Label label3 = new Label("Choose one file at first");
 
