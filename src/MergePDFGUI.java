@@ -10,6 +10,7 @@ import java.io.IOException;
 public class MergePDFGUI extends Application {
 
     Stage window;
+    VBox layout2 = new VBox(20);
 
     public static void main(String[] args) {
         launch(args);
@@ -43,7 +44,8 @@ public class MergePDFGUI extends Application {
                 MergePDF.pdfGet(file);
                 System.out.println(file.toString());
             });
-            layout.getChildren().addAll(label1, openButton2);
+            layout.getChildren().addAll(label1);
+            layout2.getChildren().add(openButton2);
         });
         Button make = new Button("make");
         Label label2 = new Label();
@@ -59,10 +61,15 @@ public class MergePDFGUI extends Application {
             label2.setText("C:\\Users\\FrankenMEXX-Karaoke2\\Desktop\\java\\blubb.pdf");
         });
         Label label3 = new Label("Choose one file at first");
+        Label labelx = new Label("Hier steht das Ergebnis");
 
-        layout.getChildren().addAll(label3, label, openButton, extendButton, make, label2);
-
-        Scene scene = new Scene(layout);
+        layout.getChildren().addAll(label, labelx, label2);
+        layout2.getChildren().addAll(openButton, extendButton, make);
+        BorderPane border = new BorderPane();
+        border.setRight(layout2);
+        border.setCenter(layout);
+        border.setTop(label3);
+        Scene scene = new Scene(border, 500,200);
         window.setScene(scene);
         window.show();
     }

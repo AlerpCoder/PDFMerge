@@ -1,11 +1,7 @@
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.tools.ant.types.Path;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -30,15 +26,15 @@ public class MergePDF {
             PDDocument pdfN = PDDocument.load(pdfFiles.get(i));
             for (int j = 0; j < pdfFiles.size(); j++) {
 
-               try {
-                   pdf.addPage(pdfN.getPages().get(j));//index out of Bounds
-               }catch(Exception ex){
-                   System.out.println(ex.getStackTrace());
+                try {
+                    pdf.addPage(pdfN.getPages().get(j));//index out of Bounds
+                } catch (Exception ex) {
+                    System.out.println(ex.getStackTrace());
                 }
 
             }
             System.out.printf(pdfFiles.get(0).getParent());
-            pdf.save(pdfFiles.get(0).getParent()+"\\blubb.pdf");//dummy name;
+            pdf.save(pdfFiles.get(0).getParent() + "\\blubb.pdf");//dummy name;
             pdfN.close();
         }
         pdf.close();
